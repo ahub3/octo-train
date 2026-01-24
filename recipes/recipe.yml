@@ -31,14 +31,7 @@ modules:
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-  - type: dnf 
-    repos:
-      files:
-        - https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo 
-      cleanup: true
-    install:
-      packages:
-        - nvidia-container-toolkit
+
   #- type: default-flatpaks
   #  configurations:
   #    - notify: true # Send notification after install/uninstall is finished (true/false)
@@ -48,6 +41,7 @@ modules:
   #        - org.mozilla.firefox
   #        - org.gnome.Loupe
   #    - scope: user # Also add Flathub user repo, but no user packages
+  - from-file: nvidia.yml
   
   - type: brew
     nofile-limits: true

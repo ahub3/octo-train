@@ -1,0 +1,9 @@
+modules:
+  - type: dnf 
+    repos:
+      files:
+        - https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo 
+      cleanup: true
+    install:
+      packages:
+        - nvidia-container-toolkit
