@@ -25,12 +25,12 @@ modules:
     repos:
       files:
         - https://negativo17.org/repos/fedora-steam.repo
-      nonfree: rpmfusion
     install:
       packages:
         - install-weak-deps: false
           packages:
             - steam
+            - kernel-modules-extra
     #repos:
     #  copr:
     #    - atim/starship
