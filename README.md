@@ -4,7 +4,7 @@ My custom image based on the blueBuild template.
 
 Main features:
 
-* based on Fedora Atomic Sway
+* based on wayblue sway nvidia open
 * nvidia-open drivers
 * homebrew
 * steam
