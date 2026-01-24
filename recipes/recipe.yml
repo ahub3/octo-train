@@ -18,7 +18,6 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
-  
   - type: dnf
     repos:
       nonfree: negativo17
@@ -41,7 +40,7 @@ modules:
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-- type: akmods
+  - type: akmods
     #base: bazzite
     base: main
     nvidia-driver: nvidia-open
