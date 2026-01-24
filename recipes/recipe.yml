@@ -23,14 +23,13 @@ modules:
     #nvidia-driver: nvidia-open
   - type: dnf
     repos:
-      files:
-        - https://negativo17.org/repos/fedora-steam.repo
+      nonfree: negativo17
+      cleanup: true
     install:
+      install-weak-deps: false
       packages:
-        - install-weak-deps: false
-          packages:
-            - steam
-            - kernel-modules-extra
+        - steam
+        - kernel-modules-extra
     #repos:
     #  copr:
     #    - atim/starship
