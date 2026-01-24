@@ -21,13 +21,16 @@ modules:
     #install:
     #  - nvidia-open
     #nvidia-driver: nvidia-open
-
   - type: dnf
     repos:
+      files:
+        - https://negativo17.org/repos/fedora-steam.repo
       nonfree: rpmfusion
     install:
       packages:
-        - steam
+        - install-weak-deps: false
+          packages:
+            - steam
     #repos:
     #  copr:
     #    - atim/starship
