@@ -23,6 +23,11 @@ modules:
     #nvidia-driver: nvidia-open
 
   - type: dnf
+    repos:
+      nonfree: rpmfusion
+    install:
+      packages:
+        - steam
     #repos:
     #  copr:
     #    - atim/starship
