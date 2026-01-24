@@ -1,6 +1,6 @@
 # OctoTrain
 
-My custom image based on the blueBuild template.
+My custom image based on the BlueBuild template.
 
 Main features:
 
