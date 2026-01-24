@@ -38,7 +38,7 @@ modules:
       cleanup: true
     install:
       packages:
-        nvidia-container-toolkit
+        - nvidia-container-toolkit
   #- type: default-flatpaks
   #  configurations:
   #    - notify: true # Send notification after install/uninstall is finished (true/false)
