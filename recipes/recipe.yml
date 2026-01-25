@@ -42,8 +42,6 @@ modules:
     snippets:
       - "curl https://raw.githubusercontent.com/nwg-piotr/autotiling/refs/heads/master/autotiling/main.py > /usr/bin/autotiling"
       - "chmod +x /usr/bin/autotiling"
-  - type: akmods
-    base: bazzite
 
   #- type: default-flatpaks
   #  configurations:
