@@ -1,13 +1,15 @@
 # OctoTrain
 
-My custom image based on the BlueBuild template.
+My custom image using the BlueBuild template.
+
+Based on the sway-nvidia-open image from [wayblue](https://github.com/wayblueorg/wayblue)
 
 Main features:
 
-* based on wayblue's sway nvidia open image
 * nvidia container toolkit
 * homebrew
 * steam
+* sway autotiling script from: https://github.com/nwg-piotr/autotiling
 
 
 ## Installation
