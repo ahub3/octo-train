@@ -25,6 +25,7 @@ modules:
       packages:
         - steam
         - kernel-modules-extra
+        - python3-i3ipc
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -32,6 +33,11 @@ modules:
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
         - vim
+  # install autotiling script for sway
+  - type: script 
+    snippets:
+      - "curl https://github.com/nwg-piotr/autotiling/blob/master/autotiling/main.py > /usr/bin/autotiling"
+      - "chmod +x /usr/bin/autotiling"
 
   #- type: default-flatpaks
   #  configurations:
