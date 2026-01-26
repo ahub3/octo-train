@@ -31,8 +31,6 @@ modules:
         - kernel-modules-extra
         #- zerotier-one
 
-  - type: dnf 
-    repos:
   - type: dnf
     repos:
       copr:
