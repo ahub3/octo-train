@@ -3,6 +3,22 @@ modules:
     files:
       - source: system
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+  - type: dnf
+    install:
+      packages:
+        - python3-i3ipc
+        - gammastep
+        - udiskie
+        - river
+    remove:
+      packages:
+        # example: removing firefox (in favor of the flatpak)
+        # "firefox" is the main package, "firefox-langpacks" is a dependency
+        - firefox
+        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        - vim
+
   - type: dnf
     repos:
       nonfree: negativo17
@@ -14,19 +30,18 @@ modules:
         - steam
         - kernel-modules-extra
         #- zerotier-one
-    remove:
-      packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-        - vim
+
+  - type: dnf 
+    repos:
   - type: dnf
+    repos:
+      copr:
+        - avengemedia/dms
+      cleanup: true
     install:
       packages:
-        - python3-i3ipc
-        - gammastep
-        - udiskie
+        - dms 
+
   # install autotiling script for sway
   - type: script 
     snippets:
