@@ -8,6 +8,7 @@ Based on images from [wayblue](https://github.com/wayblueorg/wayblue)
 
 * octo-train-main
 * octo-train-nvidia-open
+* octo-train-system76
 
 # Features:
 
