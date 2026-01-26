@@ -6,12 +6,14 @@ modules:
   - type: dnf
     repos:
       nonfree: negativo17
+      nonfree: rpmfusion
       cleanup: true
     install:
       install-weak-deps: false
       packages:
         - steam
         - kernel-modules-extra
+        - zerotier-one
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
