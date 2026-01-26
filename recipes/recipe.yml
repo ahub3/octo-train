@@ -26,6 +26,7 @@ modules:
       packages:
         - python3-i3ipc
         - gammastep
+        - udiskie
   # install autotiling script for sway
   - type: script 
     snippets:
