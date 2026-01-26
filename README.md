@@ -2,11 +2,16 @@
 
 My custom image using the BlueBuild template.
 
-Based on the sway-nvidia-open image from [wayblue](https://github.com/wayblueorg/wayblue)
+Based on images from [wayblue](https://github.com/wayblueorg/wayblue)
 
-Main features:
+# Images 
 
-* nvidia container toolkit
+* octo-train-main
+* octo-train-nvidia-open
+
+# Features:
+
+* nvidia container toolkit (octo-train-nvidia-open)
 * homebrew
 * steam
 * sway autotiling script from: https://github.com/nwg-piotr/autotiling
@@ -21,7 +26,7 @@ To rebase an existing atomic Fedora installation to the latest build:
 
 - First rebase to the unsigned image, to get the proper signing keys and policies installed:
   ```
-  rpm-ostree rebase ostree-unverified-registry:ghcr.io/ahub3/octo-train:latest
+  rpm-ostree rebase ostree-unverified-registry:ghcr.io/ahub3/octo-train-main:latest
   ```
 - Reboot to complete the rebase:
   ```
@@ -29,7 +34,7 @@ To rebase an existing atomic Fedora installation to the latest build:
   ```
 - Then rebase to the signed image, like so:
   ```
-  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ahub3/octo-train:latest
+  rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ahub3/octo-train-main:latest
   ```
 - Reboot again to complete the installation
   ```

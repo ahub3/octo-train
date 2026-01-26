@@ -1,16 +1,3 @@
----
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
-name: octo-train 
-# description will be included in the image's metadata
-description: This is my personal OS image.
-
-# the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/wayblueorg/sway-nvidia-open
-image-version: latest # latest is also supported if you want new updates ASAP
-
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
   - type: files
     files:
@@ -52,7 +39,6 @@ modules:
   #        - org.mozilla.firefox
   #        - org.gnome.Loupe
   #    - scope: user # Also add Flathub user repo, but no user packages
-  - from-file: nvidia.yml
   
   - type: brew
     nofile-limits: true
