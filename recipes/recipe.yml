@@ -12,6 +12,7 @@ modules:
         - gammastep
         - udiskie
         - river
+        - gamescope
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
