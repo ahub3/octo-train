@@ -8,14 +8,20 @@ Based on images from [wayblue](https://github.com/wayblueorg/wayblue)
 
 * octo-train-main
 * octo-train-nvidia-open
+  - also adds nvidia-container-toolkit  
 * octo-train-system76
+  - installs system76 drivers following: https://support.system76.com/articles/system76-software/ (excluding dkms+oled sections)
 
-# Features:
+# Added Packages:
 
-* nvidia container toolkit (octo-train-nvidia-open)
-* homebrew
-* steam
+* homebrew module from BlueBuild
+* steam (from negativo17 repo)
 * sway autotiling script from: https://github.com/nwg-piotr/autotiling
+* DankMaterialShell
+* zsh
+* gammastep
+* gamescope
+* zerotier-one
 
 
 ## Installation
@@ -53,5 +59,5 @@ If build on Fedora Atomic, you can generate an offline ISO with the instructions
 These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
 
 ```bash
-cosign verify --key cosign.pub ghcr.io/ahub3/octo-train
+cosign verify --key cosign.pub ghcr.io/ahub3/octo-train-main
 ```
