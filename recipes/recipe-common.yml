@@ -40,6 +40,16 @@ modules:
   #      - zerotier-one
   - type: dnf
     repos:
+      cleanup: true
+      files:
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+    install:
+      packages:
+        - repo: terra
+          packages:
+            - mangowc
+  - type: dnf
+    repos:
       copr:
         - faugus/faugus-launcher
       cleanup: true
