@@ -38,6 +38,14 @@ modules:
   #    #install-weak-deps: false
   #    packages:
   #      - zerotier-one
+  - type: dnf
+    repos:
+      copr:
+        - faugus/faugus-launcher
+      cleanup: true
+    install:
+      packages:
+        - faugus-launcher
 
   - type: dnf
     repos:
