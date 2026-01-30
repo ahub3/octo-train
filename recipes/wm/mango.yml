@@ -1,0 +1,12 @@
+modules:
+  - type: dnf
+    repos:
+      cleanup: true
+      files:
+        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+    install:
+      packages:
+        - repo: terra
+          packages:
+            - mangowc
+

@@ -11,7 +11,6 @@ modules:
         - python3-i3ipc
         - gammastep
         - udiskie
-        - niri
         - gamescope
     remove:
       packages:
@@ -19,7 +18,6 @@ modules:
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-
   - type: dnf
     repos:
       nonfree: negativo17
@@ -30,6 +28,7 @@ modules:
       packages:
         - steam
         - kernel-modules-extra
+  - from-file: wm/sway.yml
   #- type: dnf
   #  repos:
   #    nonfree: rpmfusion
@@ -38,16 +37,7 @@ modules:
   #    #install-weak-deps: false
   #    packages:
   #      - zerotier-one
-  - type: dnf
-    repos:
-      cleanup: true
-      files:
-        - https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
-    install:
-      packages:
-        - repo: terra
-          packages:
-            - mangowc
+
   - type: dnf
     repos:
       copr:
@@ -56,21 +46,6 @@ modules:
     install:
       packages:
         - faugus-launcher
-
-  - type: dnf
-    repos:
-      copr:
-        - avengemedia/dms
-      cleanup: true
-    install:
-      packages:
-        - dms 
-
-  # install autotiling script for sway
-  - type: script 
-    snippets:
-      - "curl https://raw.githubusercontent.com/nwg-piotr/autotiling/refs/tags/v1.9.3/autotiling/main.py > /usr/bin/autotiling"
-      - "chmod +x /usr/bin/autotiling"
 
   #- type: default-flatpaks
   #  configurations:

@@ -1,0 +1,10 @@
+modules:
+  - type: dnf
+    repos:
+      copr:
+        - avengemedia/dms
+      cleanup: true
+    install:
+      packages:
+        - dms
+        - niri

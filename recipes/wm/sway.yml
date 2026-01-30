@@ -1,0 +1,6 @@
+modules:
+# install autotiling script for sway
+  - type: script 
+    snippets:
+      - "curl https://raw.githubusercontent.com/nwg-piotr/autotiling/refs/tags/v1.9.3/autotiling/main.py > /usr/bin/autotiling"
+      - "chmod +x /usr/bin/autotiling"
