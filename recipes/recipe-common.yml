@@ -19,7 +19,6 @@ modules:
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-        - vim
 
   - type: dnf
     repos:
@@ -31,7 +30,14 @@ modules:
       packages:
         - steam
         - kernel-modules-extra
-        #- zerotier-one
+  - type: dnf
+    repos:
+      nonfree: rpmfusion
+      cleanup: true
+    install:
+      #install-weak-deps: false
+      packages:
+        - zerotier-one
 
   - type: dnf
     repos:
@@ -45,7 +51,7 @@ modules:
   # install autotiling script for sway
   - type: script 
     snippets:
-      - "curl https://raw.githubusercontent.com/nwg-piotr/autotiling/refs/heads/master/autotiling/main.py > /usr/bin/autotiling"
+      - "curl https://raw.githubusercontent.com/nwg-piotr/autotiling/refs/tags/v1.9.3/autotiling/main.py > /usr/bin/autotiling"
       - "chmod +x /usr/bin/autotiling"
 
   #- type: default-flatpaks
