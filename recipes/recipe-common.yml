@@ -11,7 +11,7 @@ modules:
         - python3-i3ipc
         - gammastep
         - udiskie
-        - river
+        - niri
         - gamescope
     remove:
       packages:
