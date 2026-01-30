@@ -21,7 +21,8 @@ Based on images from [wayblue](https://github.com/wayblueorg/wayblue)
 * zsh
 * gammastep
 * gamescope
-* zerotier-one
+* faugus-launcher
+* ~zerotier-one~
 
 
 ## Installation
