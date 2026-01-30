@@ -30,14 +30,14 @@ modules:
       packages:
         - steam
         - kernel-modules-extra
-  - type: dnf
-    repos:
-      nonfree: rpmfusion
-      cleanup: true
-    install:
-      #install-weak-deps: false
-      packages:
-        - zerotier-one
+  #- type: dnf
+  #  repos:
+  #    nonfree: rpmfusion
+  #    cleanup: true
+  #  install:
+  #    #install-weak-deps: false
+  #    packages:
+  #      - zerotier-one
 
   - type: dnf
     repos:
