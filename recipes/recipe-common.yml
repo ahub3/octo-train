@@ -12,6 +12,7 @@ modules:
         - gammastep
         - udiskie
         - gamescope
+        - mangohud
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -29,6 +30,7 @@ modules:
         - steam
         - kernel-modules-extra
   - from-file: wm/sway.yml
+  - from-file: wm/mango.yml
   #- type: dnf
   #  repos:
   #    nonfree: rpmfusion
