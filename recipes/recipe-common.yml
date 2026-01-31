@@ -8,7 +8,6 @@ modules:
     install:
       packages:
         - zsh
-        - python3-i3ipc
         - gammastep
         - udiskie
         - gamescope

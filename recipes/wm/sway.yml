@@ -1,5 +1,9 @@
 modules:
 # install autotiling script for sway
+  - type: dnf
+    install:
+      packages:
+        - python3-i3ipc
   - type: script 
     snippets:
       - "curl https://raw.githubusercontent.com/nwg-piotr/autotiling/refs/tags/v1.9.3/autotiling/main.py > /usr/bin/autotiling"
