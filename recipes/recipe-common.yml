@@ -13,7 +13,6 @@ modules:
         - udiskie
         - gamescope
         - mangohud
-        - rclone
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
