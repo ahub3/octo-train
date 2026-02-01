@@ -26,7 +26,7 @@ modules:
   #    #install-weak-deps: false
   #    packages:
   #      - zerotier-one
-  type: dnf
+  - type: dnf
   repos:
     cleanup: true # clean up added repos after module is done
     files:
