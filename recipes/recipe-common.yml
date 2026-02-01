@@ -20,6 +20,14 @@ modules:
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
   - type: dnf
     repos:
+      nonfree: rpmfusion
+      cleanup: true
+    install:
+      #install-weak-deps: false
+      packages:
+        - zerotier-one
+  - type: dnf
+    repos:
       nonfree: negativo17
       #nonfree: rpmfusion
       cleanup: true
@@ -30,14 +38,7 @@ modules:
         - kernel-modules-extra
   - from-file: wm/sway.yml
   - from-file: wm/mango.yml
-  #- type: dnf
-  #  repos:
-  #    nonfree: rpmfusion
-  #    cleanup: true
-  #  install:
-  #    #install-weak-deps: false
-  #    packages:
-  #      - zerotier-one
+  
 
   - type: dnf
     repos:
