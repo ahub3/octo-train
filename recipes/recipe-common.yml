@@ -18,14 +18,24 @@ modules:
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+  #- type: dnf
+  #  repos:
+  #    nonfree: rpmfusion
+  #    cleanup: true
+  #  install:
+  #    #install-weak-deps: false
+  #    packages:
+  #      - zerotier-one
   - type: dnf
     repos:
-      nonfree: rpmfusion
       cleanup: true
+      files:
+        - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
     install:
-      #install-weak-deps: false
       packages:
-        - zerotier-one
+        - repo: brave-browser 
+          packages:
+            - brave-browser 
   - type: dnf
     repos:
       nonfree: negativo17
