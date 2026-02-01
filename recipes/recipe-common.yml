@@ -12,6 +12,7 @@ modules:
         - udiskie
         - gamescope
         - mangohud
+        - chromium
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -26,19 +27,20 @@ modules:
   #    #install-weak-deps: false
   #    packages:
   #      - zerotier-one
-  - type: dnf
-    repos:
-      cleanup: true # clean up added repos after module is done
-      files:
-        - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
-      keys:
-        - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
-    install:
-      skip-unavailable: true # skip unavailable packages
-      packages:
-        - repo: brave-browser
-          packages:
-            - brave-browser 
+
+  #- type: dnf
+  #  repos:
+  #    cleanup: true # clean up added repos after module is done
+  #    files:
+  #      - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+  #    keys:
+  #      - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+  #  install:
+  #    skip-unavailable: true # skip unavailable packages
+  #    packages:
+  #      - repo: brave-browser
+  #        packages:
+  #          - brave-browser 
   - type: dnf
     repos:
       nonfree: negativo17
