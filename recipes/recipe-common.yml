@@ -8,7 +8,6 @@ modules:
     install:
       packages:
         - zsh
-        - gammastep
         - udiskie
         - gamescope
         - mangohud
