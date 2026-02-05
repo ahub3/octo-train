@@ -17,11 +17,10 @@ Based on images from [wayblue](https://github.com/wayblueorg/wayblue)
 * homebrew module from BlueBuild
 * steam (from negativo17 repo)
 * sway autotiling script from: https://github.com/nwg-piotr/autotiling
-* DankMaterialShell
 * zsh
-* gammastep
 * gamescope
 * faugus-launcher
+* chromium
 * ~zerotier-one~
 
 
