@@ -58,9 +58,9 @@ modules:
       copr:
         - ublue-os/packages
       cleanup: true
-      install:
-        packages:
-          - uupd
+    install:
+      packages:
+        - uupd
   - type: systemd 
     system: 
       enabled:
