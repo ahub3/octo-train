@@ -53,14 +53,14 @@ modules:
         - kernel-modules-extra
   - from-file: wm/sway.yml
   - from-file: wm/mango.yml
-  - type: dnf
-    repos:
-      copr:
-        - ublue-os/packages
-      cleanup: true
-    install:
-      packages:
-        - uupd
+#  - type: dnf
+#    repos:
+#      copr:
+#        - ublue-os/packages
+#      cleanup: true
+#    install:
+#      packages:
+#        - uupd
 #  - type: systemd 
 #    system: 
 #      enabled:
