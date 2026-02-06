@@ -61,10 +61,10 @@ modules:
     install:
       packages:
         - uupd
-  - type: systemd 
-    system: 
-      enabled:
-        - uupd.service 
+#  - type: systemd 
+#    system: 
+#      enabled:
+#        - uupd.service 
 
   - type: dnf
     repos:
