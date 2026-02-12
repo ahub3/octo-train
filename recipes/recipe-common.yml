@@ -29,18 +29,21 @@ modules:
 
   #- type: dnf
   #  repos:
-  #    cleanup: true # clean up added repos after module is done
   #    files:
-  #      - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+  #      - https://repo.vivaldi.com/stable/vivaldi-fedora.repo
   #    keys:
-  #      - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+  #      - https://repo.vivaldi.com/stable/linux_signing_key.pub
   #  install:
-  #    skip-unavailable: true # skip unavailable packages
   #    packages:
-  #      - repo: brave-browser
-  #        packages:
-  #          - brave-browser 
-  #      - liberation-fonts
+  #      - vivaldi-stable 
+  - type: dnf
+    repos:
+      copr:
+        - scottames/ghostty
+    install:
+      packages:
+        - ghostty
+
   - type: dnf
     repos:
       nonfree: negativo17
@@ -53,18 +56,6 @@ modules:
         - kernel-modules-extra
   - from-file: wm/sway.yml
   - from-file: wm/mango.yml
-#  - type: dnf
-#    repos:
-#      copr:
-#        - ublue-os/packages
-#      cleanup: true
-#    install:
-#      packages:
-#        - uupd
-#  - type: systemd 
-#    system: 
-#      enabled:
-#        - uupd.service 
 
   - type: dnf
     repos:
