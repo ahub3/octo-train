@@ -5,53 +5,32 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
-    install:
-      packages:
-        - zsh
-        - udiskie
-        - gamescope
-        - mangohud
-        - chromium
-    remove:
-      packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-  #- type: dnf
-  #  repos:
-  #    nonfree: rpmfusion
-  #    cleanup: true
-  #  install:
-  #    #install-weak-deps: false
-  #    packages:
-  #      - zerotier-one
-  - type: dnf
     repos:
       cleanup: true # clean up added repos after module is done
       files:
         - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
       keys:
         - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+      copr:
+        - faugus/faugus-launcher
     install:
       skip-unavailable: true # skip unavailable packages
       packages:
+        - zsh
+        - udiskie
+        - gamescope
+        - mangohud
+        - chromium
+        - faugus-launcher
         - repo: brave-browser
           packages:
             - brave-browser
-        - liberation-fonts
-  - type: dnf
-    repos:
-      copr:
-        - scottames/ghostty
-    install:
-      packages:
-        - ghostty
-
+        - liberation-fonts #for some reason this is needed to get brave to install
+        
+# Non-free packages install
   - type: dnf
     repos:
       nonfree: negativo17
-      #nonfree: rpmfusion
       cleanup: true
     install:
       install-weak-deps: false
@@ -61,24 +40,15 @@ modules:
   - from-file: wm/sway.yml
   - from-file: wm/mango.yml
 
-  - type: dnf
-    repos:
-      copr:
-        - faugus/faugus-launcher
-      cleanup: true
-    install:
-      packages:
-        - faugus-launcher
-
-  #- type: default-flatpaks
-  #  configurations:
-  #    - notify: true # Send notification after install/uninstall is finished (true/false)
-  #      scope: system
+  - type: default-flatpaks
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished (true/false)
+        scope: system
   #      # If no repo information is specified, Flathub will be used by default
   #      install: # system flatpaks we want all users to have and not remove
   #        - org.mozilla.firefox
   #        - org.gnome.Loupe
-  #    - scope: user # Also add Flathub user repo, but no user packages
+      - scope: user # Also add Flathub user repo, but no user packages
   
   - type: brew
     nofile-limits: true
