@@ -22,6 +22,7 @@ modules:
         - mangohud
         - chromium
         - faugus-launcher
+        - nautilus
         - repo: brave-browser
           packages:
             - brave-browser
