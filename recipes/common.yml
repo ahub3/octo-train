@@ -44,7 +44,7 @@ modules:
   - type: fonts
     fonts:
       nerd-fonts:
-        - SourceCodePro
+        - SauceCodePro
 
   - type: default-flatpaks
     configurations:
