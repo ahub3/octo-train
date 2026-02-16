@@ -40,6 +40,11 @@ modules:
   - from-file: wm/sway.yml
   - from-file: wm/mango.yml
 
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - SourceCodePro
+
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
