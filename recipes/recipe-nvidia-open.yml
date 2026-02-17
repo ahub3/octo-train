@@ -21,3 +21,7 @@ modules:
     install:
       packages:
         - nvidia-container-toolkit
+  - type: systemd 
+    system: 
+      enabled:
+        - nvidia-cdi-refresh.service 
