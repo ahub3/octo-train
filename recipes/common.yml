@@ -22,6 +22,7 @@ modules:
         - mangohud
         - chromium
         - faugus-launcher
+        - dolphin
         - repo: brave-browser
           packages:
             - brave-browser
@@ -39,6 +40,11 @@ modules:
         - kernel-modules-extra
   - from-file: wm/sway.yml
   - from-file: wm/mango.yml
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - SourceCodePro
 
   - type: default-flatpaks
     configurations:
