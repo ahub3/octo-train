@@ -22,8 +22,6 @@ modules:
         - mangohud
         - chromium
         - faugus-launcher
-        - mpv
-        - libsixel
         - dolphin # only installed because pika backup seems to only work with dolphin and nautilus
         - repo: brave-browser
           packages:
