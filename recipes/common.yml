@@ -22,7 +22,7 @@ modules:
         - mangohud
         - chromium
         - faugus-launcher
-        - dolphin # only installed because pika backup seems to only work with dolphin and nautilus
+        - dolphin # only installed because pika backup's restore seems to only work with dolphin and nautilus
         - repo: brave-browser
           packages:
             - brave-browser
@@ -39,7 +39,6 @@ modules:
         - steam
         - kernel-modules-extra
   - from-file: wm/sway.yml
-  - from-file: wm/mango.yml
 
   - type: fonts
     fonts:
