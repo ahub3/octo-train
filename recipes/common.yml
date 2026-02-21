@@ -37,13 +37,12 @@ modules:
       copr: 
         - ublue-os/packages
     install:
+      - just 
       - ublue-os-udev-rules
       - ublue-os-signing
       - ublue-os-luks
       - ublue-os-just
       - uupd
-      - just 
-      - 
 
   - type: systemd 
     system: 
@@ -67,12 +66,13 @@ modules:
 # Theming/Fonts
   - type: dnf
     install:
-      - fontawesome-fonts-all
-      - gnome-themes-extra
-      - gnome-icon-theme
-      - paper-icon-theme
-      - breeze-icon-theme 
-      - papirus-icon-theme
+      packages:
+        - fontawesome-fonts-all
+        - gnome-themes-extra
+        - gnome-icon-theme
+        - paper-icon-theme
+        - breeze-icon-theme 
+        - papirus-icon-theme
   - type: fonts
     fonts:
       google-fonts:
