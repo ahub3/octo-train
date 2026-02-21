@@ -6,13 +6,17 @@ name: octo-train-nvidia-open
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/wayblueorg/sway-nvidia-open
-image-version: latest # latest is also supported if you want new updates ASAP
+base-image: quay.io/fedora-ostree-desktops/sway-atomic
+image-version: 43 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - from-file: common.yml 
+  - type: akmods
+    base: main
+    nvidia-driver: nvidia-open
+
+# Install Nvidia Container Toolkit
   - type: dnf 
     repos:
       files:
@@ -25,6 +29,7 @@ modules:
     system: 
       enabled:
         - nvidia-cdi-refresh.service 
+# Set kargs for nvidia drivers
   - type: kargs
     arch: x86_64
     kargs:
@@ -33,3 +38,10 @@ modules:
       - nvidia-drm.modeset=1
       - nvidia-drm.fbdev=1
       - initcall_blacklist=simpledrm_platform_driver_init
+# Set sway environment variables for running on nvidia
+  - type: files
+    files:
+      - source: system_nvidia
+        destination: /
+
+  - from-file: common.yml 
