@@ -33,16 +33,17 @@ modules:
   - type: dnf
     repos:
       cleanup: true
-      install-weak-deps: false
       copr: 
         - ublue-os/packages
     install:
-      - just 
-      - ublue-os-udev-rules
-      - ublue-os-signing
-      - ublue-os-luks
-      - ublue-os-just
-      - uupd
+      install-weak-deps: false
+      packages:
+        - just 
+        - ublue-os-udev-rules
+        - ublue-os-signing
+        - ublue-os-luks
+        - ublue-os-just
+        - uupd
 
   - type: systemd 
     system: 
