@@ -18,27 +18,27 @@ modules:
       - source: system_nvidia
         destination: /
 
-  - type: akmods
-    base: main
-    nvidia-driver: nvidia-open
-    install:
-      - nvidia
+#  - type: akmods
+#    base: main
+#    nvidia-driver: nvidia-open
+#    install:
+#      - nvidia
 
-#  - type: script
-#    env:
-#      PUBLIC_KEY_DER_PATH: /etc/pki/akmods/certs/akmods-blue-build.der
-#    secrets:
-#      - type: file
-#        source: ./MOK.priv
-#        mount:
-#          type: file
-#          destination: /tmp/certs/private_key.priv
-#    scripts:
-#      - installnvidia.sh
-#  - type: systemd 
-#    system: 
-#      enabled:
-#        - nvidia-cdi.service
+  - type: script
+    env:
+      PUBLIC_KEY_DER_PATH: /etc/pki/akmods/certs/akmods-blue-build.der
+    secrets:
+      - type: file
+        source: ./MOK.priv
+        mount:
+          type: file
+          destination: /tmp/certs/private_key.priv
+    scripts:
+      - installnvidia.sh
+  - type: systemd 
+    system: 
+      enabled:
+        - nvidia-cdi.service
 
 # Install Nvidia Container Toolkit
 #  - type: dnf 
@@ -64,10 +64,10 @@ modules:
       - nvidia-drm.fbdev=1
       - initcall_blacklist=simpledrm_platform_driver_init
 
-  #- type: script
-  #  snippets:
-  #    - cp /usr/lib/modprobe.d/nvidia-modeset.conf /etc/modprobe.d/nvidia-modeset.conf
-  #    - sed -i 's/omit_drivers/force_drivers/g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
-  #    - sed -i 's/ nvidia / i915 amdgpu nvidia /g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
+  - type: script
+    snippets:
+      - cp /usr/lib/modprobe.d/nvidia-modeset.conf /etc/modprobe.d/nvidia-modeset.conf
+      - sed -i 's/omit_drivers/force_drivers/g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
+      - sed -i 's/ nvidia / i915 amdgpu nvidia /g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
 
   - from-file: common.yml 
