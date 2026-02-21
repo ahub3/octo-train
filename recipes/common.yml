@@ -34,7 +34,8 @@ modules:
     repos:
       cleanup: true
       install-weak-deps: false
-      copr: ublue-os/packages
+      copr: 
+        - ublue-os/packages
     install:
       - ublue-os-udev-rules
       - ublue-os-signing
