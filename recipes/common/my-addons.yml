@@ -34,7 +34,7 @@ modules:
       packages:
         - steam
         - kernel-modules-extra
-  - from-file: wm/sway.yml
+  - from-file: common/wm/sway.yml
 
 # Theming/Fonts
   - type: dnf
