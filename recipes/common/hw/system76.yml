@@ -1,0 +1,20 @@
+modules:
+  - type: dnf
+    repos:
+      copr:
+        - szydell/system76
+      cleanup: true
+    install:
+      packages:
+        - system76-driver
+        - system76-firmware
+        - system76-power
+        - firmware-manager
+  - type: systemd 
+    system: 
+      enabled:
+        - com.system76.PowerDaemon.service
+        - system76-power-wake
+        - system76-firmware-daemon.service
+      masked:
+        - power-profiles-daemon.service

@@ -1,0 +1,23 @@
+modules:
+  - type: dnf
+    repos:
+      cleanup: true # clean up added repos after module is done
+      copr:
+        - faugus/faugus-launcher
+    install:
+      skip-unavailable: true # skip unavailable packages
+      packages:
+        - gamescope
+        - mangohud
+        - faugus-launcher
+       
+# Non-free packages install
+  - type: dnf
+    repos:
+      nonfree: negativo17
+      cleanup: true
+    install:
+      install-weak-deps: false
+      packages:
+        - steam
+        - kernel-modules-extra
