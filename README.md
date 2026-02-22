@@ -2,8 +2,6 @@
 
 My custom image using the BlueBuild template.
 
-Based on images from [wayblue](https://github.com/wayblueorg/wayblue)
-
 # Images 
 
 * octo-train-main
