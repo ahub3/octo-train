@@ -4,6 +4,8 @@ modules:
     install:
       packages:
         - python3-i3ipc
+        - udiskie
+        - dolphin # only installed because pika backup's restore seems to only work with dolphin and nautilus
   - type: script 
     snippets:
       - "curl https://raw.githubusercontent.com/nwg-piotr/autotiling/refs/tags/v1.9.3/autotiling/main.py > /usr/bin/autotiling"

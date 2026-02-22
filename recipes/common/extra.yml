@@ -9,9 +9,6 @@ modules:
     install:
       skip-unavailable: true # skip unavailable packages
       packages:
-        - udiskie
-        - chromium
-        - dolphin # only installed because pika backup's restore seems to only work with dolphin and nautilus
         - repo: brave-browser
           packages:
             - brave-browser

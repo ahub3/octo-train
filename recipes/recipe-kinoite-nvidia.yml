@@ -14,5 +14,7 @@ image-version: 43 # latest is also supported if you want new updates ASAP
 modules:
   - from-file: common/hw/nvidia.yml
   - from-file: common/base.yml
+  - from-file: common/gaming.yml
+  - from-file: common/extra.yml
   - type: initramfs
   - type: signing
