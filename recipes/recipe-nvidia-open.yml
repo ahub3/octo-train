@@ -25,21 +25,13 @@ modules:
 #      - nvidia
   
 
-  - type: script
-    env:
-      PUBLIC_KEY_DER_PATH: /etc/pki/akmods/certs/akmods-blue-build.der
-    secrets:
-      - type: file
-        source: ./MOK.priv
-        mount:
-          type: file
-          destination: /tmp/certs/private_key.priv
-    scripts:
-      - installnvidia.sh
-  - type: systemd 
-    system: 
-      enabled:
-        - nvidia-cdi.service
+  - type: containerfile
+    snippets:
+      - COPY --from=ghcr.io/ublue-os/akmods-nvidia-open:main-43 /rpms/ /tmp/rpms
+      - RUN find /tmp/rpms
+      - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
+      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
+      - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
 
 # Install Nvidia Container Toolkit
 #  - type: dnf 
@@ -65,6 +57,7 @@ modules:
       - nvidia-drm.fbdev=1
       - initcall_blacklist=simpledrm_platform_driver_init
 
+# Enable early loading for nvidia drivers
   - type: script
     snippets:
       - cp /usr/lib/modprobe.d/nvidia-modeset.conf /etc/modprobe.d/nvidia-modeset.conf
