@@ -16,5 +16,8 @@ modules:
   - from-file: common/base.yml
   - from-file: common/gaming.yml
   - from-file: common/extra.yml
+  - type: os-release
+    properties:
+      PRETTY_NAME: OctoTrain (kinoite-nvidia)
   - type: initramfs
   - type: signing

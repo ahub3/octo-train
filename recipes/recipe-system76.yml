@@ -17,5 +17,8 @@ modules:
   - from-file: common/extra.yml
   - from-file: common/gaming.yml
   - from-file: common/wm/sway.yml
+  - type: os-release
+    properties:
+      PRETTY_NAME: OctoTrain (sway-system76)
   - type: initramfs
   - type: signing
