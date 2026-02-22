@@ -34,18 +34,26 @@ modules:
       - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
 
 # Install Nvidia Container Toolkit
-#  - type: dnf 
-#    repos:
-#      files:
-#        - https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo 
-#      cleanup: true
-#    install:
-#      packages:
-#        - nvidia-container-toolkit
-#  - type: systemd 
-#    system: 
-#      enabled:
-#        - nvidia-cdi-refresh.service 
+  - type: dnf 
+    repos:
+      files:
+        - https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo 
+      cleanup: true
+    install:
+      packages:
+        - nvidia-container-toolkit
+  - type: systemd 
+    system: 
+      enabled:
+        - nvidia-cdi-refresh.service 
+
+
+# Enable early loading for nvidia drivers
+  - type: script
+    snippets:
+      - cp /usr/lib/modprobe.d/nvidia-modeset.conf /etc/modprobe.d/nvidia-modeset.conf
+      - sed -i 's/omit_drivers/force_drivers/g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
+      - sed -i 's/ nvidia / i915 amdgpu nvidia /g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
 
 # Set kargs for nvidia drivers
   - type: kargs
@@ -57,11 +65,7 @@ modules:
       - nvidia-drm.fbdev=1
       - initcall_blacklist=simpledrm_platform_driver_init
 
-# Enable early loading for nvidia drivers
-  - type: script
-    snippets:
-      - cp /usr/lib/modprobe.d/nvidia-modeset.conf /etc/modprobe.d/nvidia-modeset.conf
-      - sed -i 's/omit_drivers/force_drivers/g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
-      - sed -i 's/ nvidia / i915 amdgpu nvidia /g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
-
   - from-file: common.yml 
+
+# regenerate the initramfs
+  - type: initramfs

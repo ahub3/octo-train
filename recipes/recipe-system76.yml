@@ -32,3 +32,4 @@ modules:
         - system76-firmware-daemon.service
       masked:
         - power-profiles-daemon.service
+  - type: initramfs
