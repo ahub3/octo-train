@@ -100,8 +100,8 @@ modules:
 
   - type: os-release
     properties:
-      ID: octo_train
-      ID_LIKE: fedora
+      ID: fedora 
+      ID_LIKE: octo_train 
       NAME: OctoTrain
       PRETTY_NAME: OctoTrain Image
 
