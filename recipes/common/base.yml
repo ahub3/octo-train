@@ -1,0 +1,60 @@
+modules:
+  - type: files
+    files:
+      - source: system
+        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+# Ublue packages
+  - type: dnf
+    repos:
+      cleanup: true
+      copr: 
+        - ublue-os/packages
+    install:
+      install-weak-deps: false
+      packages:
+        - just 
+        - ublue-os-udev-rules
+        - ublue-os-signing
+        - ublue-os-luks
+        - ublue-os-just
+        - uupd
+
+  - type: systemd 
+    system: 
+      enabled:
+        - uupd.timer 
+      disabled:
+        - rpm-ostreed-automatic.timer
+
+  - type: fonts
+    fonts:
+      google-fonts:
+        - Open Sans
+        - Noto Color Emoji
+      nerd-fonts:
+        - SourceCodePro
+ 
+  - type: default-flatpaks
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished (true/false)
+        scope: system
+  #      # If no repo information is specified, Flathub will be used by default
+        install: # system flatpaks we want all users to have and not remove
+          - org.gnome.World.PikaBackup  
+          - io.github.kolunmi.Bazaar
+          - org.libreoffice.LibreOffice
+      - scope: user # Also add Flathub user repo, but no user packages
+  
+  - type: brew
+    nofile-limits: true
+    brew-analytics: true
+    direct-pull: true
+    auto-upgrade: true
+
+  - type: os-release
+    properties:
+      ID: fedora 
+      ID_LIKE: octo_train 
+      NAME: OctoTrain
+      PRETTY_NAME: OctoTrain (BlueBuild)

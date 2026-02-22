@@ -1,0 +1,53 @@
+modules:
+# Copy configuration files needed for sway and nvidia container toolkit
+  - type: files
+    files:
+      - source: nvidia
+        destination: /
+
+# This should work for installing nvidia drivers I think, but doesn't right now
+#  - type: akmods
+#    base: main
+#    nvidia-driver: nvidia-open
+#    install:
+#      - nvidia
+
+  - type: containerfile
+    snippets:
+      - COPY --from=ghcr.io/ublue-os/akmods-nvidia-open:main-43 /rpms/ /tmp/rpms
+      - RUN find /tmp/rpms
+      - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
+      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
+      - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
+
+# Install Nvidia Container Toolkit
+  - type: dnf 
+    repos:
+      files:
+        - https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo 
+      cleanup: true
+    install:
+      packages:
+        - nvidia-container-toolkit
+  - type: systemd 
+    system: 
+      enabled:
+        - nvidia-cdi-refresh.service 
+
+
+# Enable early loading for nvidia drivers
+  - type: script
+    snippets:
+      - cp /usr/lib/modprobe.d/nvidia-modeset.conf /etc/modprobe.d/nvidia-modeset.conf
+      - sed -i 's/omit_drivers/force_drivers/g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
+      - sed -i 's/ nvidia / i915 amdgpu nvidia /g' /usr/lib/dracut/dracut.conf.d/99-nvidia.conf
+
+# Set kargs for nvidia drivers
+  - type: kargs
+    arch: x86_64
+    kargs:
+      - rd.driver.blacklist=nouveau
+      - modprobe.blacklist=nouveau
+      - nvidia-drm.modeset=1
+      - nvidia-drm.fbdev=1
+      - initcall_blacklist=simpledrm_platform_driver_init

@@ -1,0 +1,48 @@
+modules:
+  - type: dnf
+    repos:
+      cleanup: true # clean up added repos after module is done
+      files:
+        - https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
+      keys:
+        - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
+      copr:
+        - faugus/faugus-launcher
+    install:
+      skip-unavailable: true # skip unavailable packages
+      packages:
+        - zsh
+        - udiskie
+        - gamescope
+        - mangohud
+        - chromium
+        - faugus-launcher
+        - dolphin # only installed because pika backup's restore seems to only work with dolphin and nautilus
+        - distrobox
+        - repo: brave-browser
+          packages:
+            - brave-browser
+        - liberation-fonts #for some reason this is needed to get brave to install
+       
+# Non-free packages install
+  - type: dnf
+    repos:
+      nonfree: negativo17
+      cleanup: true
+    install:
+      install-weak-deps: false
+      packages:
+        - steam
+        - kernel-modules-extra
+  - from-file: wm/sway.yml
+
+# Theming/Fonts
+  - type: dnf
+    install:
+      packages:
+        - fontawesome-fonts-all
+        - gnome-themes-extra
+        - gnome-icon-theme
+        - paper-icon-theme
+        - breeze-icon-theme 
+        - papirus-icon-theme

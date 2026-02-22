@@ -32,5 +32,7 @@ modules:
       masked:
         - power-profiles-daemon.service
 
-  - from-file: common.yml 
+  - from-file: ./common/base.yml
+  - from-file: ./common/my-addons.yml
   - type: initramfs
+  - type: signing
