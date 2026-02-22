@@ -66,8 +66,8 @@ modules:
   - type: brew
     nofile-limits: true
     brew-analytics: true
-    direct-pull: true
-    auto-upgrade: true
+    direct-pull: false 
+    auto-upgrade: false # uupd should update this 
 
   - type: os-release
     properties:
