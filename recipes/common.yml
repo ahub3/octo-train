@@ -98,4 +98,11 @@ modules:
     direct-pull: true
     auto-upgrade: true
 
+  - type: os-release
+    properties:
+      ID: octo_train
+      ID_LIKE: fedora
+      NAME: OctoTrain
+      PRETTY_NAME: OctoTrain Image
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
