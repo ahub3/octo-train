@@ -27,6 +27,7 @@ modules:
       disabled:
         - rpm-ostreed-automatic.timer
 
+# Theming/Fonts
   - type: fonts
     fonts:
       google-fonts:
@@ -34,6 +35,15 @@ modules:
         - Noto Color Emoji
       nerd-fonts:
         - SourceCodePro
+  - type: dnf
+    install:
+      packages:
+        - fontawesome-fonts-all
+        - gnome-themes-extra
+        - gnome-icon-theme
+        - paper-icon-theme
+        - breeze-icon-theme 
+        - papirus-icon-theme
  
   - type: default-flatpaks
     configurations:
