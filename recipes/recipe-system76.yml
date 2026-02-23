@@ -17,6 +17,7 @@ modules:
   - from-file: common/extra.yml
   - from-file: common/gaming.yml
   - from-file: common/wm/sway.yml
+  - from-file: common/proprietary-modules.yml
   - type: os-release
     properties:
       PRETTY_NAME: OctoTrain (sway-system76)
