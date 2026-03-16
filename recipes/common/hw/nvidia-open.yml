@@ -5,12 +5,19 @@ modules:
       - source: nvidia
         destination: /
 
-## This should work for installing nvidia drivers I think, but doesn't right now
-#  - type: akmods
-#    base: main
-#    nvidia-driver: nvidia-open
-#    install:
-#      - nvidia
+This installs from ublue's akmods repo
+  - type: containerfile
+    snippets:
+      - COPY --from=ghcr.io/ublue-os/akmods-nvidia-open:main-43 /rpms/ /tmp/rpms
+      - RUN find /tmp/rpms
+      - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
+      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo
+# This should work for installing nvidia drivers I think, but doesn't right now
+  - type: akmods
+    base: main
+    nvidia-driver: nvidia-open
+    install:
+      - nvidia
 
 #This installs from ublue's akmods repo
 #  - type: containerfile
@@ -25,16 +32,15 @@ modules:
 #      #- RUN dnf install -y /tmp/rpms/nvidia/nvidia-container-toolkit-1*.rpm /tmp/rpms/nvidia/nvidia-container-toolkit-base-1*.rpm /tmp/rpms/nvidia/libnvidia-container1-1*.rpm /tmp/rpms/nvidia/libnvidia-container-tools-1*.rpm 
 
 # install from rpmfusion
-  - type: bling
-    install:
-      - rpmfusion
+#  - type: bling
+#    install:
+#      - rpmfusion
 
 # from: https://github.com/bootc-dev/bootc/discussions/993#discussioncomment-11665256
-#
-  - type: script 
-    snippets:
-      - "dnf install -y --allowerasing --skip-broken akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-power libva-nvidia-driver libva-utils vdpauinfo ${NULL} 2> /dev/null"
-      - "akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`"
+#  - type: containerfile 
+#    snippets:
+#      - RUN dnf install -y --allowerasing --skip-broken akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-power libva-nvidia-driver libva-utils vdpauinfo ${NULL}
+#      - RUN akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
 
 #  - type: dnf
 #    repos:
