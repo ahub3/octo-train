@@ -23,9 +23,9 @@ modules:
 
 
 # install from rpmfusion
- - type: bling
-   install:
-     - rpmfusion
+  - type: bling
+    install:
+      - rpmfusion
 
   - type: dnf
     repos:
