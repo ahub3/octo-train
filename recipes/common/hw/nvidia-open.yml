@@ -10,7 +10,7 @@ modules:
     base: main
     nvidia-driver: nvidia-open
     install:
-      - nvidia-open
+      - nvidia
 
 ##This installs from ublue's akmods repo
 #  - type: containerfile
