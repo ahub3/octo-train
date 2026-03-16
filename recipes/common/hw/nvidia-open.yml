@@ -29,9 +29,10 @@ modules:
     install:
       - rpmfusion
 
+# from: https://github.com/bootc-dev/bootc/discussions/993#discussioncomment-11665256
   - type: containerfile 
     snippets:
-      - RUN dnf install -y --allowerasing akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-power libva-nvidia-driver libva-utils vdpauinfo
+      - RUN dnf install -y --allowerasing akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-power libva-nvidia-driver libva-utils vdpauinfo ${NULL}
       - RUN akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
 
 #  - type: dnf
