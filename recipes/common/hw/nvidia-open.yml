@@ -6,11 +6,11 @@ modules:
         destination: /
 
 # This should work for installing nvidia drivers I think, but doesn't right now
-#  - type: akmods
-#    base: main
-#    nvidia-driver: nvidia-open
-#    install:
-#      - nvidia
+  - type: akmods
+    base: main
+    nvidia-driver: nvidia-open
+    install:
+      - nvidia-open
 
 ##This installs from ublue's akmods repo
 #  - type: containerfile
@@ -23,18 +23,19 @@ modules:
 
 
 # install from rpmfusion
-  - type: bling
-    install:
-      - rpmfusion
+#  - type: bling
+#    install:
+#      - rpmfusion
+#
+#  - type: dnf
+#    repos:
+#      cleanup: true
+#    install:
+#      packages:
+#        - akmod-nvidia-open 
+#        - xorg-x11-drv-nvidia-cuda
+#        - xorg-x11-drv-nvidia-power
 
-  - type: dnf
-    repos:
-      cleanup: true
-    install:
-      packages:
-        - akmod-nvidia-open 
-        - xorg-x11-drv-nvidia-cuda
-        - xorg-x11-drv-nvidia-power
   - type: systemd 
     system: 
       enabled:
