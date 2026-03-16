@@ -5,13 +5,6 @@ modules:
       - source: nvidia
         destination: /
 
-# This should work for installing nvidia drivers I think, but doesn't right now
-#  - type: akmods
-#    base: main
-#    nvidia-driver: nvidia-open
-#    install:
-#      - nvidia
-
   - type: containerfile
     snippets:
       - COPY --from=ghcr.io/ublue-os/akmods-nvidia-lts:main-43 /rpms/ /tmp/rpms
@@ -19,6 +12,13 @@ modules:
       - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
       - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia-lts.repo
       - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
+
+  - type: systemd 
+    system: 
+      enabled:
+        - nvidia-suspend.service
+        - nvidia-resume.service
+        - nvidia-hibernate.service
 
 # Install Nvidia Container Toolkit
   - type: dnf 
