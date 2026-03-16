@@ -5,7 +5,7 @@ modules:
       - source: nvidia
         destination: /
 
-This installs from ublue's akmods repo
+#This installs from ublue's akmods repo
   - type: containerfile
     snippets:
       - COPY --from=ghcr.io/ublue-os/akmods-nvidia-open:main-43 /rpms/ /tmp/rpms
