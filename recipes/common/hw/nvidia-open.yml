@@ -32,8 +32,8 @@ modules:
   - type: dnf
     repos:
       cleanup: true
-      skip-broken: true
     install:
+      skip-broken: true
       packages:
         - akmod-nvidia-open 
         - xorg-x11-drv-nvidia-cuda
