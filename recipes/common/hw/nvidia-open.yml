@@ -44,4 +44,4 @@ modules:
       - modprobe.blacklist=nouveau
       - nvidia-drm.modeset=1
       - nvidia-drm.fbdev=1
-      - initcall_blacklist=simpledrm_platform_driver_init
+      #- initcall_blacklist=simpledrm_platform_driver_init
