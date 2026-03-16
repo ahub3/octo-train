@@ -21,32 +21,6 @@ modules:
       - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
       - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-driver-cuda-libs nvidia-modprobe nvidia-persistenced nvidia-settings
 
-# install from rpmfusion
-#  - type: bling
-#    install:
-#      - rpmfusion
-
-# from: https://github.com/bootc-dev/bootc/discussions/993#discussioncomment-11665256
-#  - type: containerfile 
-#    snippets:
-#      - RUN dnf install -y --allowerasing --skip-broken akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-power libva-nvidia-driver libva-utils vdpauinfo ${NULL}
-#      - RUN akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
-
-#  - type: dnf
-#    repos:
-#      cleanup: true
-#    install:
-#      skip-broken: true
-#      allow-erasing: true
-#      packages:
-#        - akmod-nvidia-open 
-#        - xorg-x11-drv-nvidia-cuda
-#        - xorg-x11-drv-nvidia-cuda-libs
-#        - xorg-x11-drv-nvidia-power
-#        - libva-nvidia-driver
-#        - libva-utils
-#        - vdpauinfo
-
 #  - type: systemd 
 #    system: 
 #      enabled:
