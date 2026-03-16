@@ -21,11 +21,14 @@ modules:
 #      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
 #      - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
 
+
 # install from rpmfusion
+type: bling
+install:
+    - rpmfusion
   - type: dnf
     repos:
       cleanup: true
-      nonfree: rpmfusion
     install:
       packages:
         - akmod-nvidia-open 
