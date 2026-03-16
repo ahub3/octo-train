@@ -47,12 +47,12 @@ modules:
 #        - libva-utils
 #        - vdpauinfo
 
-  - type: systemd 
-    system: 
-      enabled:
-        - nvidia-suspend.service
-        - nvidia-resume.service
-        - nvidia-hibernate.service
+#  - type: systemd 
+#    system: 
+#      enabled:
+#        - nvidia-suspend.service
+#        - nvidia-resume.service
+#        - nvidia-hibernate.service
 
 
 # Install Nvidia Container Toolkit
