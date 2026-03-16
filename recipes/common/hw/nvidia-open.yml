@@ -59,8 +59,3 @@ modules:
       - nvidia-drm.modeset=1
       - nvidia-drm.fbdev=1
       - initcall_blacklist=simpledrm_platform_driver_init
-
-# rebuild akmods? may not be needed
-  - type: containerfile
-    snippets:
-      - RUN akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
