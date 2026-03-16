@@ -33,7 +33,7 @@ modules:
 #
   - type: script 
     snippets:
-      - "dnf install -y --allowerasing --skip-broken akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-power libva-nvidia-driver libva-utils vdpauinfo ${NULL}"
+      - "dnf install -y --allowerasing --skip-broken akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-power libva-nvidia-driver libva-utils vdpauinfo ${NULL} 2> /dev/null"
       - "akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`"
 
 #  - type: dnf
