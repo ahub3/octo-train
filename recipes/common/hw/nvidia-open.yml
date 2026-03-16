@@ -18,7 +18,7 @@ modules:
       - RUN find /tmp/rpms
       - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
       - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
-      - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
+      - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings xorg-x11-drv-nvidia-power
 
 # Install Nvidia Container Toolkit
   - type: dnf 
@@ -29,10 +29,14 @@ modules:
     install:
       packages:
         - nvidia-container-toolkit
+
   - type: systemd 
     system: 
       enabled:
         - nvidia-cdi-refresh.service 
+        - nvidia-suspend.service
+        - nvidia-resume.service
+        - nvidia-hibernate.service
 
 
 # Enable early loading for nvidia drivers
