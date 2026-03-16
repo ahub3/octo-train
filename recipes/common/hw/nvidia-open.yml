@@ -12,13 +12,32 @@ modules:
 #    install:
 #      - nvidia
 
-  - type: containerfile
-    snippets:
-      - COPY --from=ghcr.io/ublue-os/akmods-nvidia-open:main-43 /rpms/ /tmp/rpms
-      - RUN find /tmp/rpms
-      - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
-      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
-      - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
+##This installs from ublue's akmods repo
+#  - type: containerfile
+#    snippets:
+#      - COPY --from=ghcr.io/ublue-os/akmods-nvidia-open:main-43 /rpms/ /tmp/rpms
+#      - RUN find /tmp/rpms
+#      - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
+#      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
+#      - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
+
+# install from rpmfusion
+  - type: dnf
+    repos:
+      cleanup: true
+      nonfree: rpmfusion
+    install:
+      packages:
+        - akmod-nvidia-open 
+        - xorg-x11-drv-nvidia-cuda
+        - xorg-x11-drv-nvidia-power
+  - type: systemd 
+    system: 
+      enabled:
+        - nvidia-suspend.service
+        - nvidia-resume.service
+        - nvidia-hibernate.service
+
 
 # Install Nvidia Container Toolkit
   - type: dnf 
@@ -29,15 +48,10 @@ modules:
     install:
       packages:
         - nvidia-container-toolkit
-
   - type: systemd 
     system: 
       enabled:
         - nvidia-cdi-refresh.service 
-        - nvidia-suspend.service
-        - nvidia-resume.service
-        - nvidia-hibernate.service
-
 
 # Enable early loading for nvidia drivers
   - type: script
