@@ -29,20 +29,25 @@ modules:
     install:
       - rpmfusion
 
-  - type: dnf
-    repos:
-      cleanup: true
-    install:
-      skip-broken: true
-      allow-erasing: true
-      packages:
-        - akmod-nvidia-open 
-        - xorg-x11-drv-nvidia-cuda
-        - xorg-x11-drv-nvidia-cuda-libs
-        - xorg-x11-drv-nvidia-power
-        - libva-nvidia-driver
-        - libva-utils
-        - vdpauinfo
+  - type: containerfile 
+    snippets:
+      - RUN dnf install -y --allowerasing akmod-nvidia-open xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs xorg-x11-drv-nvidia-power libva-nvidia-driver libva-utils vdpauinfo
+      - RUN akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
+
+#  - type: dnf
+#    repos:
+#      cleanup: true
+#    install:
+#      skip-broken: true
+#      allow-erasing: true
+#      packages:
+#        - akmod-nvidia-open 
+#        - xorg-x11-drv-nvidia-cuda
+#        - xorg-x11-drv-nvidia-cuda-libs
+#        - xorg-x11-drv-nvidia-power
+#        - libva-nvidia-driver
+#        - libva-utils
+#        - vdpauinfo
 
   - type: systemd 
     system: 
