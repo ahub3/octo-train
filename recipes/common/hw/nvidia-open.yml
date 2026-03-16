@@ -5,31 +5,21 @@ modules:
       - source: nvidia
         destination: /
 
+# This should work for installing nvidia drivers I think, but doesn't right now
+#  - type: akmods
+#    base: main
+#    nvidia-driver: nvidia-open
+#    install:
+#      - nvidia
+
 #This installs from ublue's akmods repo
   - type: containerfile
     snippets:
       - COPY --from=ghcr.io/ublue-os/akmods-nvidia-open:main-43 /rpms/ /tmp/rpms
       - RUN find /tmp/rpms
       - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
-      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo
-# This should work for installing nvidia drivers I think, but doesn't right now
-  - type: akmods
-    base: main
-    nvidia-driver: nvidia-open
-    install:
-      - nvidia
-
-#This installs from ublue's akmods repo
-#  - type: containerfile
-#    snippets:
-#      - COPY --from=ghcr.io/ublue-os/akmods-nvidia-open:main-43 /rpms/ /tmp/rpms
-#      - RUN find /tmp/rpms
-#      - RUN dnf install -y /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
-#      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
-#      #- RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm 
-#      - RUN dnf install -y --allowerasing --skip-broken /tmp/rpms/nvidia/libnvidia-cfg-*.rpm /tmp/rpms/nvidia/libnvidia-fbc-*.rpm /tmp/rpms/nvidia/libnvidia-gpucomp-*.rpm /tmp/rpms/nvidia/libnvidia-ml-*.rpm /tmp/rpms/nvidia/nvidia-libXNVCtrl-5*.rpm /tmp/rpms/nvidia/nvidia-settings-5*.rpm /tmp/rpms/nvidia/nvidia-driver-*.rpm /tmp/rpms/nvidia/nvidia-kmod-common-*.rpm /tmp/rpms/nvidia/nvidia-modprobe-5*.rpm /tmp/rpms/nvidia/nvidia-persistenced-5*.rpm /tmp/rpms/nvidia/xorg-x11*.rpm  libva-nvidia-driver ${NULL}
-#      #- RUN akmods --force --kernels `rpm -q --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}' kernel-devel`
-#      #- RUN dnf install -y /tmp/rpms/nvidia/nvidia-container-toolkit-1*.rpm /tmp/rpms/nvidia/nvidia-container-toolkit-base-1*.rpm /tmp/rpms/nvidia/libnvidia-container1-1*.rpm /tmp/rpms/nvidia/libnvidia-container-tools-1*.rpm 
+      - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
+      - RUN dnf install -y /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings
 
 # install from rpmfusion
 #  - type: bling
