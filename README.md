@@ -4,10 +4,10 @@ My custom image using the BlueBuild template.
 
 # Images 
 
-* octo-train-main
-* octo-train-nvidia-open
+* sway
+* sway-nvidia-open
   - also adds nvidia-container-toolkit  
-* octo-train-system76
+* sway-system76
   - installs system76 drivers following: https://support.system76.com/articles/system76-software/ (excluding dkms+oled sections)
 
 # Added Packages:
@@ -18,7 +18,6 @@ My custom image using the BlueBuild template.
 * zsh
 * gamescope
 * faugus-launcher
-* chromium
 * ~zerotier-one~
 
 
@@ -57,5 +56,5 @@ If build on Fedora Atomic, you can generate an offline ISO with the instructions
 These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](https://github.com/sigstore/cosign). You can verify the signature by downloading the `cosign.pub` file from this repo and running the following command:
 
 ```bash
-cosign verify --key cosign.pub ghcr.io/ahub3/octo-train-main
+cosign verify --key cosign.pub ghcr.io/ahub3/sway
 ```
