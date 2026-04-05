@@ -58,9 +58,9 @@ modules:
         scope: system
   #      # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - org.gnome.World.PikaBackup  
-          - io.github.kolunmi.Bazaar
-          - org.libreoffice.LibreOffice
+          - org.gnome.World.PikaBackup/x86_64/stable
+          - io.github.kolunmi.Bazaar/x86_64/stable
+          - org.libreoffice.LibreOffice/x86_64/stable
       - scope: user # Also add Flathub user repo, but no user packages
   
   - type: brew
