@@ -31,7 +31,7 @@ jobs:
           - recipe-sway.yml
           - recipe-sway-nvidia-open.yml
           - recipe-sway-system76.yml
-          - recipe-kinoite-nvidia.yml
+          - recipe-mom-edition.yml
     steps:
       # the build is fully handled by the reusable github action
       - name: Build Custom Image
