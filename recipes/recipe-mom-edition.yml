@@ -14,8 +14,17 @@ image-version: 43 # latest is also supported if you want new updates ASAP
 modules:
   #- from-file: common/hw/nvidia.yml
   - from-file: common/base.yml
-  #- from-file: common/gaming.yml
-  #- from-file: common/extra.yml
+  - type: default-flatpaks
+    configurations:
+      - notify: true # Send notification after install/uninstall is finished (true/false)
+        scope: system
+  #      # If no repo information is specified, Flathub will be used by default
+        install: # system flatpaks we want all users to have and not remove
+          - org.kde.okular
+          - org.kde.gwenview
+          - org.libreoffice.LibreOffice/x86_64/stable
+          - org.videolan.VLC 
+      - scope: user # Also add Flathub user repo, but no user packages
   - from-file: common/proprietary-modules.yml
   - type: os-release
     properties:
