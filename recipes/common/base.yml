@@ -46,7 +46,7 @@ modules:
     install:
       packages:
         - fontawesome-fonts-all
-        - gnome-themes-extra
+        #- gnome-themes-extra
         - gnome-icon-theme
         - paper-icon-theme
         - breeze-icon-theme 
