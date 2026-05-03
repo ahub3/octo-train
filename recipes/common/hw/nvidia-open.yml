@@ -16,30 +16,11 @@ modules:
       - RUN dnf install -y  /tmp/rpms/nvidia/nvidia-driver-libs-*.i686.rpm
       - RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/nvidia-container-toolkit.repo   
       - RUN dnf install -y nvidia-container-toolkit nvidia-container-toolkit-base libnvidia-container-tools libnvidia-container1
-      
       #- RUN export NVIDIA_CONTAINER_TOOLKIT_VERSION="1.19.0-1"; dnf install -y \
       #      nvidia-container-toolkit-"$NVIDIA_CONTAINER_TOOLKIT_VERSION" \
       #      nvidia-container-toolkit-base-"$NVIDIA_CONTAINER_TOOLKIT_VERSION" \
       #      libnvidia-container-tools-"$NVIDIA_CONTAINER_TOOLKIT_VERSION" \
       #      libnvidia-container1-"$NVIDIA_CONTAINER_TOOLKIT_VERSION"
-
-  #- type: containerfile
-  #  snippets:
-  #    - RUN curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | tee /etc/yum.repos.d/nvidia-container-toolkit.repo
-  #    - RUN export NVIDIA_CONTAINER_TOOLKIT_VERSION=1.19.0-1 dnf install -y \
-  #          nvidia-container-toolkit-"$NVIDIA_CONTAINER_TOOLKIT_VERSION" \
-  #          nvidia-container-toolkit-base-"$NVIDIA_CONTAINER_TOOLKIT_VERSION" \
-  #          libnvidia-container-tools-"$NVIDIA_CONTAINER_TOOLKIT_VERSION" \
-  #          libnvidia-container1-"$NVIDIA_CONTAINER_TOOLKIT_VERSION"
-## Install Nvidia Container Toolkit
-#  - type: dnf 
-#    repos:
-#      files:
-#        - https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo 
-#      #cleanup: true
-#    install:
-#      packages:
-#        - nvidia-container-toolkit
 
   - type: systemd 
     system: 
