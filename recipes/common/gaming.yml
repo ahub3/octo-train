@@ -9,7 +9,7 @@ modules:
       packages:
         - gamescope
         - mangohud
-        #- faugus-launcher
+        - faugus-launcher
        
 # Non-free packages install
   - type: dnf
