@@ -4,13 +4,14 @@ modules:
       cleanup: true # clean up added repos after module is done
       copr:
         - faugus/faugus-launcher
+        - atim/zerotier-one
     install:
       skip-unavailable: true # skip unavailable packages
       packages:
         - gamescope
         - mangohud
-        #- faugus-launcher
-       
+        - faugus-launcher
+        - zerotier-one
 # Non-free packages install
   - type: dnf
     repos:
