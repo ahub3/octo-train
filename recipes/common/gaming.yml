@@ -11,8 +11,8 @@ modules:
         - gamescope
         - mangohud
         - faugus-launcher
-        - zerotier-one
-        - miniupnpc-devel #to try to fix zerotier-one
+        #- zerotier-one
+        #- miniupnpc-devel #to try to fix zerotier-one
 # Non-free packages install
   - type: dnf
     repos:
