@@ -23,3 +23,7 @@ modules:
       packages:
         - steam
         - kernel-modules-extra
+
+  - type: containerfile
+    snippets:
+      - RUN curl -s https://install.zerotier.com | bash
