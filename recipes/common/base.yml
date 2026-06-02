@@ -37,15 +37,21 @@ modules:
 # Theming/Fonts
   - type: fonts
     fonts:
-      google-fonts:
-        - Open Sans
-        - Noto Color Emoji
+      #google-fonts:
+      #  - Open Sans
+      #  - Noto Color Emoji
       nerd-fonts:
         - SourceCodePro
   - type: dnf
     install:
       packages:
+        #- open-sans-fonts
+        - google-noto-emoji-color-fonts
         - fontawesome-fonts-all
+        - google-noto-sans-vf-fonts 
+        - google-noto-serif-vf-fonts 
+        - google-noto-sans-cjk-vf-fonts 
+        - google-noto-serif-cjk-vf-fonts
         #- gnome-themes-extra
         - gnome-icon-theme
         - paper-icon-theme
