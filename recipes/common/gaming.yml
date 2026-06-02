@@ -24,6 +24,10 @@ modules:
         - steam
         - kernel-modules-extra
 
+  - type: files
+    files:
+      - source: gaming 
+        destination: /
   - type: containerfile
     snippets:
-      - RUN curl -s https://install.zerotier.com | bash
+      - RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-ZEROTIER; dnf install zerotier-one
