@@ -30,5 +30,4 @@ modules:
         destination: /
   - type: containerfile
     snippets:
-      - RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-ZEROTIER 
-      - RUN dnf install zerotier-one
+      - RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-ZEROTIER; dnf install -y zerotier-one
