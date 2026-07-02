@@ -4,15 +4,12 @@ modules:
       cleanup: true # clean up added repos after module is done
       copr:
         - faugus/faugus-launcher
-        - atim/zerotier-one
     install:
       skip-unavailable: true # skip unavailable packages
       packages:
         - gamescope
         - mangohud
         - faugus-launcher
-        #- zerotier-one
-        #- miniupnpc-devel #to try to fix zerotier-one
 # Non-free packages install
   - type: dnf
     repos:
@@ -28,6 +25,6 @@ modules:
     files:
       - source: gaming 
         destination: /
-  - type: containerfile
-    snippets:
-      - RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-ZEROTIER; dnf install -y zerotier-one
+  #- type: containerfile
+  #  snippets:
+  #    - RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-ZEROTIER; dnf install -y zerotier-one
