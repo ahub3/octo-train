@@ -28,9 +28,9 @@ jobs:
       matrix:
         recipe:
           # !! Add your recipes here
-          - recipe-sway.yml
-          - recipe-sway-nvidia-open.yml
-          - recipe-sway-system76.yml
+          #- recipe-sway.yml
+          #- recipe-sway-nvidia-open.yml
+          #- recipe-sway-system76.yml
           - recipe-mom-edition.yml
     steps:
       # the build is fully handled by the reusable github action
